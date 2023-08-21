@@ -14,7 +14,7 @@ header#home {
 }
 
 #home nav {
-    width: 60%;
+    width: 55%;
     height: 10vh;
     padding: 0 2%;
     float: right;
@@ -22,7 +22,7 @@ header#home {
     background-color: aliceblue;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 #home nav a {
