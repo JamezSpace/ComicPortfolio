@@ -128,10 +128,24 @@ header h1 {
     border: 2px solid var(--accent-dark);
     border-radius: 50%;
     display: inline-block;
+    position: absolute;
+    left: 50%;
+    z-index: 0;
+    translate: -50% 0;
+    scale: 0.2;
+    transition: scale 0.75s ease;
 }
+
 #vw_two img{
-    max-width: 100%;
+    max-width: 25%;
     object-fit: cover;
     object-position: center;
+    transform: translateY(-5px);
     clip-path: ellipse(45% 30% at 50% 30%);
+    position: relative;
+    z-index: 1;
+}
+
+#vw_two img:hover ~ .profileImageHolder{
+    scale: 1.2;
 }
