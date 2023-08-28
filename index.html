@@ -7,14 +7,14 @@
     <link rel="preload" as="font" type="font/woff2" href="https://fonts.googleapis.com/css?family=Raleway|Alegreya|Merriweather" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway|Alegreya|Merriweather">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" type="text/css">
     <title>My Portfolio</title>
 </head>
 
 <body>
     <header id="home">
         <nav id="header_nav">
-            <a href="#vw_two">About Me</a>
+            <a href="#about">About Me</a>
             <a href="#">Services</a>
             <a href="#">My Works</a>
             <a href="#">Contact Me</a>
@@ -23,11 +23,37 @@
 
         <h1>Comic Book Colorist<br>Cover Artist<br>Pinup Colorist</h1>
     </header>
-    <div id="vw_two">
-        <h2>Welcome to my page, I go by Benedict Adukanle.</h2>
-        <img src="img/mypic.jpg" alt="portrait picture of me">
-        <span class="profileImageHolder"></span>
+    <div id="about">
+        <!-- <h2>Welcome to my page, I go by Benedict Adukanle.</h2>
+        <div class="profileImageHolder"><img src="img/mypic.jpg" alt="portrait picture of me"></div><br>
+        <a href="#" id="pseudo_btn">about me</a> -->
+
+        <!-- Second slide -->
+        <div class="slide_two">
+            <aside>
+                <div class="profileImageHolder"><img src="img/mypic.jpg" alt="portrait picture of me"></div>
+                <h2>Benedict Adukanle</h2>
+            </aside>
+            <main>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque ex molestiae vero minima doloremque rem, non aliquam tempora blanditiis eaque adipisci esse voluptates libero amet maiores, nobis, provident dolorum aspernatur.
+            </main>
+        </div>
     </div>
+    <div id="contact">
+        <h2>contact <br> me</h2>
+        <form action="">
+            <input type="text" name="name" id="name">
+            <br>
+            <input type="email" name="email" id="email">
+            <br>
+            <input type="text" name="message" id="message">
+            <br>
+            <button>cancel</button><button>send</button>
+        </form>
+    </div>
+    <footer>
+        <div id="text">&copy;Benedict Adukanle 2023</div>
+    </footer>
 
     <script src="index.js"></script>
 </body>

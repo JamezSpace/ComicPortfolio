@@ -11,7 +11,7 @@
     --accent-dark: #a8b3bd;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -42,8 +42,8 @@ header h1 {
     font-family: "Merriweather", sans-serif;
     font-size: 4.5rem;
     background: linear-gradient(to top right, var(--primary-light), var(--accent-light));
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -68,7 +68,7 @@ header h1 {
     position: relative;
 }
 
-#home nav a:before{
+#home nav a:before {
     content: "";
     position: absolute;
     top: 50%;
@@ -83,7 +83,7 @@ header h1 {
     transition: 0.5s, transform 500s ease;
 }
 
-#home nav a:after{
+#home nav a:after {
     content: "";
     position: absolute;
     top: 50%;
@@ -97,55 +97,121 @@ header h1 {
     transition: 0.5s;
 }
 
-#home nav a:hover::before{
+#home nav a:hover::before {
     opacity: 0.3;
     transform: rotate(36000deg);
 }
 
-#home nav a:hover::after{
+#home nav a:hover::after {
     opacity: 0.4;
 }
 
 
 
-#vw_two{
+#about {
     width: 100%;
-    height: 100vh;
-    padding: 1.5em;
+    /* height: ; */
+    padding: 3em 1.5em;
     box-sizing: border-box;
     text-align: center;
     background-color: var(--primary-light);
 }
 
-#vw_two h2{
+#about h2 {
+    margin: .5em auto;
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--background-light);
 }
-#vw_two .profileImageHolder{
+
+#about .profileImageHolder {
     width: 250px;
     height: 250px;
-    border: 2px solid var(--accent-dark);
     border-radius: 50%;
-    display: inline-block;
-    position: absolute;
-    left: 50%;
+    outline: 1px solid transparent;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     z-index: 0;
-    translate: -50% 0;
-    scale: 0.2;
-    transition: scale 0.75s ease;
+    scale: 1;
+    overflow: hidden;
+    transition: all 0.35s linear;
 }
 
-#vw_two img{
-    max-width: 25%;
+#about .profileImageHolder img {
+    max-width: 100%;
     object-fit: cover;
     object-position: center;
-    transform: translateY(-5px);
+    transform: translateY(75px);
     clip-path: ellipse(45% 30% at 50% 30%);
     position: relative;
     z-index: 1;
+    scale: 1;
 }
 
-#vw_two img:hover ~ .profileImageHolder{
-    scale: 1.2;
+#about .profileImageHolder:hover {
+    outline-offset: 3.5px;
+    outline-color: var(--accent-dark);
+}
+
+#about #pseudo_btn {
+    display: inline-block;
+    color: #fff;
+    margin: .5em auto;
+}
+
+/* #pseudo_btn::after{
+    
+
+} */
+
+.slide_two {
+    display: flex;
+}
+
+.slide_two .profileImageHolder {
+    margin-top: .5em;
+}
+
+.slide_two aside {
+    width: 35%;
+}
+
+.slide_two main {
+    width: 75%;
+    padding: .5em;
+    box-sizing: border-box;
+    font-size: 1.25rem;
+}
+
+#contact {
+    width: 85%;
+    height: 20em;
+    border-radius: 30px;
+    background-color: var(--accent-light);
+    padding: 1.5em 3em;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* justify-content: space-between; */
+    box-sizing: border-box;
+}
+
+#contact h2 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 2em;
+    font-family: "Merriweather", sans-serif;
+}
+
+#contact form{
+    width: 100%;
+    
+}
+
+#contact form input{
+    width: 100%;
+}
+#contact button {
+    
 }
