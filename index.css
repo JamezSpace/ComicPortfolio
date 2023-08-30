@@ -106,8 +106,6 @@ header h1 {
     opacity: 0.4;
 }
 
-
-
 #about {
     width: 100%;
     /* height: ; */
@@ -182,6 +180,23 @@ header h1 {
     padding: .5em;
     box-sizing: border-box;
     font-size: 1.25rem;
+}
+
+#works {
+    width: 100%;
+    height: 120vh;
+    background-color: var(--background-dark);
+    padding: 1.5em 2em;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, );
+}
+
+#works h1{
+    width: 20%;
+    margin: 0;
+    font-size: 5rem;
+    color: var(--text-dark);
 }
 
 #contact {
@@ -353,7 +368,7 @@ textarea#message:focus {
     right: 0;
 }
 
-footer{
+footer {
     height: 10vh;
     display: flex;
     justify-content: center;
