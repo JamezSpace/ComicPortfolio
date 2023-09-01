@@ -1,3 +1,32 @@
+const images = document.querySelectorAll("section.innerwrapper img");
+console.log(images);
+
+// function wait(arr, i) {
+//     return new Promise(resolve => {
+//         setTimeout(console.log("hi"), 3000);
+//     });
+// }
+
+async function test() {
+    for (let i = 0; i < images.length; i++) {
+        while (!images[i].complete) {
+            const el = await wait(images, i);
+            console.log(el);
+            if (el.complete) {
+                addClickEvent(images[i]);
+                break;
+            }
+        }
+    }
+}
+
+test();
+
+function addClickEvent(element) {
+    element.addEventListener("click", e => {
+        alert("hi");
+    });
+}
 const form = document.forms['contactMe'];
 const submit = document.getElementById("btn_submit");
 const nameField = document.getElementById("name");
@@ -11,7 +40,7 @@ function valName() {
 
     if (inputName.length == 0) {
         let notif = "  Name field cannot be left blank";
-    }else if (!letters.test(inputName)) {
+    } else if (!letters.test(inputName)) {
         let notif = "  Only letter characters permitted";
     } else {
         valid = true;
@@ -22,12 +51,18 @@ function valName() {
 
 function valEmail() {
     let valid = false;
+    let email_exclaim = document.getElementById("email_exclaim");
     let notif = "";
     const splitEmail = email.value.trim().split("@");
     const emailsExt = ["gmail.com", "yahoo.com", "outlook.com"];
 
     if (email.value.trim() == "") {
         notif = "  Fill in your email address please";
+        email_exclaim.style.opacity = 1;
+        email_exclaim.style.animationPlayState = "running";
+    }else{
+        email_exclaim.style.opacity = 0;
+        email_exclaim.style.animationPlayState = "paused";
     }
 
     if (email.value.trim().length > 0 && emailsExt.indexOf(splitEmail[1]) != 0) {
@@ -50,7 +85,7 @@ function valInputs(element) {
     const resultName = valName();
     const resultEmail = valEmail();
     const array = [resultName, resultSName, resultEmail];
-    
+
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
 
@@ -76,35 +111,35 @@ function valInputs(element) {
         }
         return false;
     }
-    
+
     return valid;
-}    
+}
 
 
-form.addEventListener("input" , e => {
+form.addEventListener("input", e => {
     let count = 0;
     let validArray = [false, false, false];
-    nameField.value.trim().length > 0? validArray[0] = true : validArray[0] = false;
-    email.value.trim().length > 0? validArray[1] = true : validArray[1] = false;
-    message.value.trim().length > 0? validArray[2] = true : validArray[2] = false;
+    nameField.value.trim().length > 0 ? validArray[0] = true : validArray[0] = false;
+    email.value.trim().length > 0 ? validArray[1] = true : validArray[1] = false;
+    message.value.trim().length > 0 ? validArray[2] = true : validArray[2] = false;
 
     for (let i = 0; i < validArray.length; i++) {
         if (validArray[i]) {
             count++;
         }
     }
-    
-    if(count == 3){
+
+    if (count == 3) {
         submit.disabled = false;
         count = 0;
-    }else{
+    } else {
         submit.disabled = true;
     }
 });
 
 submit.addEventListener("click", e => {
     //that is if validate Input is false
-    if (!valInputs()) { 
-        
+    if (!valInputs()) {
+
     }
 });
