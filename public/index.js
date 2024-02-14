@@ -1,5 +1,27 @@
 const navs = document.getElementsByClassName("nav");
 
+
+function open_nav_bar() {
+    document.getElementById("mobile-nav").classList.add("active")
+    document.body.classList.add("nav-bar-opened")
+}
+
+function close_nav_bar() {
+    document.getElementById("mobile-nav").classList.remove("active")
+    document.body.classList.remove("nav-bar-opened")
+}
+
+// close nav bar when any anchor tag is clicked in te open nav bar
+const refs = document.getElementsByClassName("section")
+
+for (let i = 0; i < refs.length; i++) {
+    const ref = refs[i];
+    ref.addEventListener("click", e => {
+        close_nav_bar()
+    })
+}
+
+
 const images = document.querySelectorAll("section.innerwrapper img");
 console.log(images);
 

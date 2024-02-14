@@ -21,19 +21,17 @@
             <a href="#works">My Works</a>
             <a href="#contact">Contact Me</a>
             <iconify-icon icon="pepicons-print:menu" style="color: #0d110f;" width="40" height="40"
-                flip="horizontal"></iconify-icon>
+                flip="horizontal" onclick="open_nav_bar()"></iconify-icon>
         </nav>
 
-        <h1>Comic Book Colorist<br>Cover Artist<br>Pinup Colorist</h1>
+        <h1 class="fluid-heading">Comic Book Colorist<br>Cover Artist<br>Pinup Colorist</h1>
 
-        <nav class="mobile-nav">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7l10 10M7 17L17 7" />
-            </svg>
-            <a href="#about">About Me</a>
-            <a href="#">Services</a>
-            <a href="#works">My Works</a>
-            <a href="#contact">Contact Me</a>
+        <nav id="mobile-nav">
+            <iconify-icon icon="iconamoon:close" width="40" height="40" onclick="close_nav_bar()"></iconify-icon>
+            <a href="#about" class="section">About Me</a>
+            <a href="#" class="section">Services</a>
+            <a href="#works" class="section">My Works</a>
+            <a href="#contact" class="section">Contact Me</a>
         </nav>
     </header>
     <div id="about">
@@ -63,7 +61,7 @@
         </div>
     </div>
     <div id="works">
-        <h1>My Works</h1>
+        <h2 class="fluid-heading">My Works</h2>
         <section class="overview">
             <section class="innerwrapper">
                 <img src="img/pic (1).jpg" alt="" loading="lazy">
