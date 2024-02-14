@@ -3,7 +3,7 @@
     --background-light: #fcfdfc;
     --primary-light: #3d5151;
     --secondary-light: #c5ccd3;
-    --accent-light: #586674;
+    --accent-light: #E6EAEE;
     --text-dark: #fcfdfc;
     --background-dark: #0d110f;
     --primary-dark: #3d5151;
@@ -23,6 +23,10 @@ body {
     position: relative;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 a {
     text-decoration: none;
     cursor: pointer;
@@ -34,7 +38,7 @@ img {
 }
 
 .nav-bar-opened {
-    background-color: #000;
+    background-color: var(--background-dark);
 }
 
 header#home {
@@ -53,18 +57,23 @@ header#home {
     padding: 0 5%;
     text-transform: capitalize;
     font-family: "Merriweather", sans-serif;
+    font-weight: 700;
     background: linear-gradient(to top right, var(--primary-light), var(--accent-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    line-height: 1.5;
+    letter-spacing: -1px;
+}
+
+#home h1 span {
+    display: inline-block;
+    margin-bottom: 7.5px;
 }
 
 nav#header_nav {
     width: 100%;
     height: 5.5vh;
-    padding: 0 2%;
-    box-sizing: border-box;
+    padding: 0 4%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -84,7 +93,7 @@ nav#header_nav a:nth-of-type(2) {
     margin-left: auto !important;
 }
 
-nav#header_nav a:not(:first-of-type){
+nav#header_nav a:not(:first-of-type) {
     margin: 0 2rem;
 }
 
@@ -126,21 +135,21 @@ nav#header_nav a:hover::after {
     opacity: 0.4;
 }
 
-nav#header_nav > :not(a){
+nav#header_nav> :not(a) {
     display: none;
     cursor: pointer;
-} 
+}
 
-nav a.logo-container{
+nav a.logo-container {
     width: 100px;
 }
 
 a.logo-container img {
     inline-size: 100%;
-    translate: 0 5.5px;
+    translate: -15px 5.5px;
 }
 
-#mobile-nav.active{
+#mobile-nav.active {
     transform: translateX(0);
 }
 
@@ -153,7 +162,6 @@ a.logo-container img {
     right: 0;
     z-index: 5;
     padding: 5%;
-    box-sizing: border-box;
     text-align: right;
     transform: translateX(100%);
     transition: transform 200ms ease;
@@ -164,7 +172,7 @@ a.logo-container img {
     line-height: 50px;
 }
 
-#mobile-nav :not(a){
+#mobile-nav :not(a) {
     transform: translateX(10px);
     margin: 30px 0;
     cursor: pointer;
@@ -173,17 +181,16 @@ a.logo-container img {
 #about {
     width: 100%;
     padding: 3em 1.5em;
-    box-sizing: border-box;
     text-align: center;
     background-color: var(--primary-light);
     transition: all 0.35s linear;
 }
 
-#about div.active{
-    display: flex !important; 
+#about div.active {
+    display: flex !important;
 }
 
-#about #slide_one{
+#about #slide_one {
     display: none;
     flex-direction: column;
     align-items: center;
@@ -208,13 +215,13 @@ a.logo-container img {
     scale: 1;
     overflow: hidden;
     transition: all 0.35s linear;
-} 
+}
 
 #about .profileImageHolder img {
     max-width: 100%;
     transform: translate(-9px, 25px) scale(1.1);
     position: relative;
-    z-index: 1;    
+    z-index: 1;
 }
 
 #about #slide_one .profileImageHolder:hover {
@@ -238,7 +245,7 @@ a.logo-container img {
     flex: 1 1 30%;
 }
 
-#about #slide_two aside h2{
+#about #slide_two aside h2 {
     margin: 0.5em auto;
     font-size: 2rem;
 }
@@ -246,11 +253,10 @@ a.logo-container img {
 #about #slide_two main {
     flex: 1 1 70%;
     padding: .5em;
-    box-sizing: border-box;
     font-size: 1.25rem;
 }
 
-.navigators{
+.navigators {
     width: 80px;
     height: 30px;
     display: flex;
@@ -260,7 +266,7 @@ a.logo-container img {
     transform: translateY(100%);
 }
 
-.navigators div{
+.navigators div {
     width: 15px;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -272,26 +278,25 @@ a.logo-container img {
     background-color: #000;
 }
 
-.navigators div.active{
+.navigators div.active {
     outline-offset: 4.5px;
 }
 
 #works {
     width: 100%;
     height: auto;
-    background-color: var(--background-dark);
+    /* background-color: var(--primary-dark); */
     padding: 2em 1.5em;
-    box-sizing: border-box;
     /* display: grid;
     grid-template-columns: repeat(auto-fit, ); */
 }
 
 #works h2 {
     width: 100%;
-    margin: 0;  
+    margin: 0;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--text-light);
     text-align: center;
 }
 
@@ -301,26 +306,8 @@ a.logo-container img {
     border-radius: calc(20px + 1.75em);
     backdrop-filter: blur(3px);
     padding: 1.75em;
-    box-sizing: border-box;
     position: relative;
     overflow: hidden;
-}
-
-.overview::before {
-    position: absolute;
-    content: '';
-    border-radius: inherit;
-    background: conic-gradient(#ff53bb,
-            #0000 30deg 120deg,
-            #00f8d3 150deg 180deg,
-            #0000 210deg 300deg,
-            #ff53bb 330deg);
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: intersect;
-    z-index: -1;
 }
 
 .overview:after {
@@ -328,40 +315,30 @@ a.logo-container img {
     position: absolute;
     inset: -100px;
     background:
-        radial-gradient(200px at left 400px top 150px, #ff53bb 100%, #0000),
-        radial-gradient(200px at right 400px bottom 150px, #00f8d3 100%, #0000);
+        radial-gradient(200px at left 400px top 150px, #74c69d 100%, #0000),
+        radial-gradient(200px at right 400px bottom 150px, #ff4d6d 100%, #0000),
+        radial-gradient(200px at bottom 400px left 150px, #9A97B4 100%, #0000),
+        radial-gradient(200px at top 400px right 150px, #ff9100 100%, #0000);
     filter: blur(120px);
     opacity: .5;
     z-index: -1;
 }
 
-.overview:before,
 .overview:after {
     transition: .5s, 99999s 99999s transform;
 }
 
-/* .overview:hover {
-    box-shadow: 0 0 0 1px #666;
-} */
-
-.overview:hover:before,
 .overview:hover:after {
     transform: rotate(36000deg);
     transition: .5s, 600s linear transform;
 }
-
-.overview:before {
-    background-color: #222;
-      border: 2px solid #333;
-  }
 
 .overview .innerwrapper {
     width: 100%;
     height: auto;
     border: 2px solid rgb(252, 253, 252, 0.6);
     border-radius: 20px;
-    box-sizing: border-box;
-    background-color: var(--background-dark);
+    /* background-color: var(--background-dark); */
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -378,16 +355,13 @@ a.logo-container img {
 
 #contact {
     width: 85%;
-    max-height: 1fr;
     border-radius: 30px;
     background-color: var(--accent-light);
-    padding: 1.5em 3em;
+    padding: 1.5em 10vw;
     margin: 10px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* justify-content: space-between; */
-    box-sizing: border-box;
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 #contact h2 {
@@ -399,8 +373,7 @@ a.logo-container img {
 }
 
 #contact form {
-    width: 100%;
-    box-sizing: border-box;
+    flex: 1 0 10rem;
 }
 
 #contact form .box {
@@ -412,7 +385,6 @@ a.logo-container img {
     width: 100%;
     height: 10%;
     margin-bottom: 5%;
-    box-sizing: border-box;
     outline: none;
     border-top: none;
     border-left: none;
@@ -435,7 +407,6 @@ input[type="email"]#email {
 textarea#message {
     width: 100%;
     height: 30%;
-    box-sizing: border-box;
     opacity: 0.6;
     outline: none;
     background-color: transparent;
@@ -546,10 +517,11 @@ textarea#message:focus {
     right: 0;
 }
 
-.caution{
+.caution {
     opacity: 0;
 }
-.tooltip{
+
+.tooltip {
     width: 100px;
     content: "";
     position: absolute;
@@ -560,27 +532,34 @@ textarea#message:focus {
     opacity: 0;
     transition: opacity 450ms ease;
 }
-.caution:hover ~ .tooltip{
+
+.caution:hover~.tooltip {
     opacity: 1;
 }
-#email_exclaim{
+
+#email_exclaim {
     animation: shake 700ms linear;
     animation-play-state: paused;
 }
+
 @keyframes shake {
-    5%{
+    5% {
         transform: rotate(20deg);
     }
-    25%{
+
+    25% {
         transform: rotate(-20deg);
     }
-    50%{
+
+    50% {
         transform: rotate(20deg);
     }
-    75%{
+
+    75% {
         transform: rotate(-20deg);
     }
-    95%{
+
+    95% {
         transform: rotate(-20deg);
     }
 }

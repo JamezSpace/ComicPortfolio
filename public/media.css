@@ -2,16 +2,34 @@
     header#home {
         height: 97vh;
     }
-    nav#header_nav a:not(:first-of-type){
+
+    nav#header_nav a:not(:first-of-type) {
         display: none;
     }
-    nav#header_nav :not(a){
+
+    nav#header_nav :not(a) {
         display: inline-block;
         margin-left: auto;
     }
 }
 
 @media screen and (max-width : 425px) {
-    
- 
+    #works {
+        padding: 2em 0;
+    }
+
+    #works .overview {
+        padding: 1em;
+        border-radius: calc(20px + 1em);
+    }
+
+    #contact {
+        padding: 1.5em 2em;
+    }
+
+    #contact h2 {
+        font-size: 1.75em;
+        flex: 0 0 6.95em;
+    }
+
 }
