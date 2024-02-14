@@ -1,14 +1,11 @@
 :root {
-    --text-light: #0d110f;
+    --my-black: #0d110f;
     --background-light: #fcfdfc;
-    --primary-light: #3d5151;
-    --secondary-light: #c5ccd3;
-    --accent-light: #E6EAEE;
+    --primary: #3d5151;
+    --secondary: #7ac9c9;
+    --accent: #D3D9D9;
     --text-dark: #fcfdfc;
-    --background-dark: #0d110f;
-    --primary-dark: #3d5151;
-    --secondary-dark: #020303;
-    --accent-dark: #a8b3bd;
+    /* --accent-dark: #a8b3bd; */
 }
 
 html {
@@ -38,7 +35,7 @@ img {
 }
 
 .nav-bar-opened {
-    background-color: var(--background-dark);
+    background-color: var(--my-black);
 }
 
 header#home {
@@ -58,7 +55,7 @@ header#home {
     text-transform: capitalize;
     font-family: "Merriweather", sans-serif;
     font-weight: 700;
-    background: linear-gradient(to top right, var(--primary-light), var(--accent-light));
+    background: linear-gradient(to top right, var(--primary), var(--my-black));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -82,7 +79,7 @@ nav#header_nav {
 }
 
 #home nav a {
-    color: var(--text-light);
+    color: var(--my-black);
     font-family: "Raleway", sans-serif;
     font-weight: 400;
     font-size: 1.15rem;
@@ -106,7 +103,7 @@ nav#header_nav a:not(:first-of-type):before {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    outline: 2px solid var(--text-light);
+    outline: 2px solid var(--my-black);
     outline-style: dotted;
     opacity: 0;
     transition: 0.5s, transform 500s ease;
@@ -121,7 +118,7 @@ nav#header_nav a:not(:first-of-type):after {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    outline: 1px solid var(--text-light);
+    outline: 1px solid var(--my-black);
     opacity: 0;
     transition: 0.5s;
 }
@@ -182,7 +179,7 @@ a.logo-container img {
     width: 100%;
     padding: 3em 1.5em;
     text-align: center;
-    background-color: var(--primary-light);
+    background-color: var(--primary);
     transition: all 0.35s linear;
 }
 
@@ -243,6 +240,7 @@ a.logo-container img {
 
 #about #slide_two aside {
     flex: 1 1 30%;
+    color: var(--text-dark);
 }
 
 #about #slide_two aside h2 {
@@ -254,6 +252,7 @@ a.logo-container img {
     flex: 1 1 70%;
     padding: .5em;
     font-size: 1.25rem;
+    color: var(--text-dark);
 }
 
 .navigators {
@@ -270,22 +269,25 @@ a.logo-container img {
     width: 15px;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    outline: 1px solid black;
+    outline: 1px solid ;
+    outline-color: transparent;
     margin: 0 auto;
     cursor: pointer;
     pointer-events: auto;
     transition: all 0.5s ease;
-    background-color: #000;
+    background-color: #7ac9c950;
 }
 
 .navigators div.active {
     outline-offset: 4.5px;
+    outline-color: var(--secondary);
+    opacity: 0.5;
 }
 
 #works {
     width: 100%;
     height: auto;
-    /* background-color: var(--primary-dark); */
+    /* background-color: var(--primary); */
     padding: 2em 1.5em;
     /* display: grid;
     grid-template-columns: repeat(auto-fit, ); */
@@ -296,7 +298,7 @@ a.logo-container img {
     margin: 0;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-light);
+    color: var(--my-black);
     text-align: center;
 }
 
@@ -338,17 +340,17 @@ a.logo-container img {
     height: auto;
     border: 2px solid rgb(252, 253, 252, 0.6);
     border-radius: 20px;
-    /* background-color: var(--background-dark); */
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
     gap: .75em;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; commenting this line makes all images same height */
 }
 
 .innerwrapper img {
-    height: 20em;
+    /* height: 20em; */
+    width: 10em;
     border-radius: calc(20px - 10px);
 }
 
@@ -356,24 +358,25 @@ a.logo-container img {
 #contact {
     width: 85%;
     border-radius: 30px;
-    background-color: var(--accent-light);
+    background-color: var(--accent);
     padding: 1.5em 10vw;
     margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    overflow: hidden;
+    color: var(--my-black);
 }
 
 #contact h2 {
     margin: 0;
     text-transform: uppercase;
     font-size: 2em;
-    font-family: "Merriweather", sans-serif;
-    color: var(--text-dark);
 }
 
 #contact form {
     flex: 1 0 10rem;
+    color: var(--my-black);
 }
 
 #contact form .box {
@@ -389,14 +392,13 @@ a.logo-container img {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1.5px solid var(--background-light);
+    border-bottom: 1.5px solid var(--my-black);
     opacity: 0.6;
     background-color: transparent;
     font-family: "Raleway", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 1.75px;
-    color: var(--text-dark);
     text-transform: uppercase;
 }
 
@@ -410,13 +412,12 @@ textarea#message {
     opacity: 0.6;
     outline: none;
     background-color: transparent;
-    color: var(--text-dark);
     text-transform: none;
     outline: none;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1.5px solid var(--background-light);
+    border-bottom: 1.5px solid var(--my-black);
     font-family: "Raleway", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
@@ -430,7 +431,7 @@ textarea#message::placeholder {
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 1.75px;
-    color: var(--text-dark);
+    color: var(--my-black);
     opacity: 0.7;
     text-transform: uppercase;
 }
@@ -466,11 +467,7 @@ textarea#message:focus {
     font-weight: 600;
     background-color: transparent;
     border: none;
-    color: var(--neon-white);
-    /* box-shadow: 0px 1px 2px var(--neon-white),
-        0px -1px 2px var(--neon-white),
-        1px 0 2px var(--neon-white),
-        -1px 0 2px var(--neon-white); */
+    color: var(--primary);
     position: relative;
     isolation: isolate;
     transition: color 450ms;
@@ -480,7 +477,7 @@ textarea#message:focus {
     content: "";
     position: absolute;
     z-index: -1;
-    background: var(--neon-white);
+    background: var(--primary);
     border-radius: 5px;
     inset: 0;
 
@@ -496,7 +493,7 @@ textarea#message:focus {
 }
 
 #contact button:enabled:hover {
-    color: var(--text-light);
+    color: var(--neon-white);
 }
 
 #contact button:first-of-type {
@@ -525,7 +522,7 @@ textarea#message:focus {
     width: 100px;
     content: "";
     position: absolute;
-    border: 1px solid var(--background-dark);
+    border: 1px solid var(--my-black);
     color: var(--text-dark);
     /* left: 0; */
     /* transform: translateY(-50%); */

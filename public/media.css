@@ -23,6 +23,14 @@
         border-radius: calc(20px + 1em);
     }
 
+    .overview::after {
+        display: none;
+    }
+
+    .overview .innerwrapper {
+        padding: 0;        
+    }
+
     #contact {
         padding: 1.5em 2em;
     }
