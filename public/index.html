@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway|Alegreya|Merriweather">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="media.css">
     <title>My Portfolio</title>
 </head>
 
@@ -24,16 +25,26 @@
         </nav>
 
         <h1>Comic Book Colorist<br>Cover Artist<br>Pinup Colorist</h1>
+
+        <nav class="mobile-nav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7l10 10M7 17L17 7" />
+            </svg>
+            <a href="#about">About Me</a>
+            <a href="#">Services</a>
+            <a href="#works">My Works</a>
+            <a href="#contact">Contact Me</a>
+        </nav>
     </header>
     <div id="about">
         <!-- First slide -->
-        <div class="slide_one active">
+        <div id="slide_one" class="active">
             <h2>Welcome to my page, I go by Benedict Adukanle.</h2>
             <div class="profileImageHolder"><img src="img/mypic.jpg" alt="portrait picture of me"></div><br>
         </div>
 
         <!-- Second slide -->
-        <div class="slide_two">
+        <div id="slide_two">
             <aside>
                 <div class="profileImageHolder"><img src="img/mypic.jpg" alt="portrait picture of me"></div>
                 <h2>Benedict Adukanle</h2>
@@ -47,8 +58,8 @@
 
         <!-- Navigators -->
         <div class="navigators">
-            <div class="nav active" id="nav-1"></div>
-            <div class="nav" id="nav-2"></div>
+            <div class="nav active" id="nav-1" data-points_to="slide_one"></div>
+            <div class="nav" id="nav-2" data-points_to="slide_two"></div>
         </div>
     </div>
     <div id="works">
@@ -100,7 +111,7 @@
         </form>
     </div>
     <footer>
-        <div id="text">&copy;Benedict Adukanle 2023</div>
+        <div id="text">&copy;Benedict Adukanle <span id="year"></span></div>
     </footer>
 
     <script src="index.js"></script>
