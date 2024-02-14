@@ -6,16 +6,16 @@ const app = express()
 app.use(bodyparser.urlencoded({extended : true}))
 
 app.post('/submit', (req, res) => {
-    const { userName, email, message } = req.body,
+    const { name, email, message } = req.body,
         fullMessage = `
-        Hi, I am ${userName},
+        Hi, I am ${name}.
 
         Here's my message: ${message}
 
         Here's my email: ${email}
         Thank you.
     `
-
+    console.log(fullMessage);
     let transporter = nodemailer.createTransport({
         service : 'gmail',
         auth : {
