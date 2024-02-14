@@ -57,6 +57,7 @@ header#home {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    line-height: 1.5;
 }
 
 nav#header_nav {
