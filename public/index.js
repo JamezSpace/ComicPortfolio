@@ -1,35 +1,5 @@
 const navs = document.getElementsByClassName("nav");
 
-function toggleActive(a, b, pressedBtn){
-    const arr = [a, b];
-    const btn = pressedBtn.id == a.id ? a : b;
-    arr.splice((arr.indexOf(btn)), 1); // this removes the pressed button from the array
-    const btn_active = btn.classList.contains("active");
-
-    if (!btn_active) {
-        arr[0].classList.remove("active");
-        btn.classList.add("active");
-    }
-}
-for (let i = 0; i < navs.length; i++) {
-    const nav = navs[i];
-    nav.addEventListener("click", (e) => {
-        const id = e.target.id;
-        const div_one = document.querySelector("div#about div.slide_one");
-        const div_two = document.querySelector("div#about div.slide_two");
-
-        if (id == "nav-1") {
-            if(!div_one.classList.contains("active")) div_one.classList.add("active");
-            if (div_two.classList.contains("active")) div_two.classList.remove("active");
-        }else{
-            if(!div_two.classList.contains("active")) div_two.classList.add("active");
-            if (div_one.classList.contains("active")) div_one.classList.remove("active");
-        }
-
-        toggleActive(navs[0], navs[1], e.target);
-    })
-}
-
 const images = document.querySelectorAll("section.innerwrapper img");
 console.log(images);
 
@@ -59,6 +29,8 @@ function addClickEvent(element) {
         alert("hi");
     });
 }
+
+
 const form = document.forms['contactMe'];
 const submit = document.getElementById("btn_submit");
 const nameField = document.getElementById("name");
@@ -84,9 +56,9 @@ function valName() {
 
 //     if (
 //         email.value.trim() !== "" &&
-        
+
 //         ) {
-        
+
 //     }
 
 //     if (email.value.trim().length > 0 && emailsExt.indexOf(splitEmail[1]) != 0) {
@@ -167,3 +139,43 @@ submit.addEventListener("click", e => {
         e.preventDefault()
     }
 });
+
+document.getElementById("year").textContent = new Date().getFullYear()
+
+function set_slideshow_active() {
+    const navigators = document.getElementsByClassName("nav")
+
+    for (let i = 0; i < navigators.length; i++) {
+        const nav = navigators[i];
+
+        if (nav.classList.contains("active")) {
+            // remove the active on the navigator itself
+            nav.classList.remove("active")
+
+            const slide = nav.dataset.points_to
+
+            // remove the active on the slide
+            document.getElementById(slide.toString()).classList.remove("active")
+
+            let next_index = (i + 1) % navigators.length
+            navigators[next_index].classList.add("active")
+            let next_slide = navigators[next_index].dataset.points_to
+            document.getElementById(next_slide.toString()).classList.add("active")
+
+            break
+        }
+
+
+    }
+}
+
+function handleIntersection(entries) {
+    entries.map(entry => {
+        if (entry.isIntersecting) {
+            set_slideshow_active()
+        }
+    })
+}
+
+const my_observer = new IntersectionObserver(handleIntersection, { threshold: 1 })
+my_observer.observe(document.getElementById("about"))
