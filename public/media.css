@@ -1,5 +1,8 @@
 @media screen and (max-width : 900px) {
-    nav#header_nav a{
+    header#home {
+        height: 97vh;
+    }
+    nav#header_nav a:not(:first-of-type){
         display: none;
     }
     nav#header_nav :not(a){
