@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" as="font" type="font/woff2"
-        href="https://fonts.googleapis.com/css?family=Raleway|Alegreya|Merriweather" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway|Alegreya|Merriweather">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400..900&family=Merriweather:wght@700&family=Raleway:wght@400&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="index.css" type="text/css">
     <link rel="stylesheet" href="media.css">
@@ -27,7 +27,13 @@
                 flip="horizontal" onclick="open_nav_bar()"></iconify-icon>
         </nav>
 
-        <h1 class="fluid-heading">Comic Book Colorist<br>Cover Artist<br>Pinup Colorist</h1>
+        <h1 class="fluid-heading">
+            <span>Comic Book Colorist</span>
+            <br>
+            <span>Cover Artist</span>
+            <br>
+            Pinup Colorist
+        </h1>
 
         <nav id="mobile-nav">
             <iconify-icon icon="iconamoon:close" width="40" height="40" onclick="close_nav_bar()"></iconify-icon>
