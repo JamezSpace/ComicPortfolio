@@ -1,0 +1,16 @@
+@media screen and (max-width : 900px) {
+    nav#header_nav a{
+        display: none;
+    }
+    nav#header_nav :not(a){
+        display: inline-block;
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width : 425px) {
+    #home nav{
+        margin: 40px 0 0 auto;
+    }
+ 
+}
