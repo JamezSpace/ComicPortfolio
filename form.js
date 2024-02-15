@@ -6,16 +6,18 @@ const app = express()
 app.use(bodyparser.urlencoded({extended : true}))
 
 app.post('/submit', (req, res) => {
+    console.log(req.body);
     const { name, email, message } = req.body,
         fullMessage = `
         Hi, I am ${name}.
 
-        Here's my message: ${message}
+        Here's my message: <p>${message}</p>
 
         Here's my email: ${email}
         Thank you.
     `
-    console.log(fullMessage);
+
+    console.log(fullMessage);   
     let transporter = nodemailer.createTransport({
         service : 'gmail',
         auth : {
@@ -28,7 +30,7 @@ app.post('/submit', (req, res) => {
         from : process.env.portfolio_email,
         to : process.env.portfolio_email,
         subject : "Message from your portfolio",
-        text : fullMessage
+        html : fullMessage
     }
 
     function send_email(mail_details){
@@ -46,7 +48,7 @@ app.post('/submit', (req, res) => {
         })
     }
 
-    send_email(mail_details)
+    // send_email(mail_details)
 
     res.redirect('/')
 })

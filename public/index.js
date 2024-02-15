@@ -71,28 +71,25 @@ function valName() {
     return [nameField, valid];
 }
 
-// function valEmail() {
-//     let valid = false;
-//     const splitEmail = email.value.trim().split("@");
-//     const emailsExt = ["gmail.com", "yahoo.com", "outlook.com"];
+function valEmail() {
+    let valid = false;
+    const splitEmail = email.value.trim().split("@");
+    const emailsExt = ["gmail.com", "yahoo.com", "outlook.com"];
 
-//     if (
-//         email.value.trim() !== "" &&
+    // if (email.value.trim() !== "" &&) {
 
-//         ) {
+    // }
 
-//     }
+    if (email.value.trim().length > 0 && emailsExt.indexOf(splitEmail[1]) != 0) {
+        notif = "  Email address extension not valid";
+    }
 
-//     if (email.value.trim().length > 0 && emailsExt.indexOf(splitEmail[1]) != 0) {
-//         notif = "  Email address extension not valid";
-//     }
+    if (typeof splitEmail[0] === "string" && emailsExt.indexOf(splitEmail[1]) >= 0) {
+        valid = true;
+    }
 
-//     if (typeof splitEmail[0] === "string" && emailsExt.indexOf(splitEmail[1]) >= 0) {
-//         valid = true;
-//     }
-
-//     return [email, valid];
-// }
+    return [email, valid];
+}
 
 function valInputs() {
     let valid = false;
@@ -119,12 +116,12 @@ function valInputs() {
         // TO CHANGE THE COLOR OF THE LINE FOR THE INVALID INPUTS TO RED
         for (let i = 0; i < invalids.length; i++) {
             const element = invalids[i];
-            element.style.border = "1.5px solid red";
+            element.style.borderColor = "var(--invalid-input)";
         }
         // AFTER CHANGING BOTTOM-BORDER LINE TO RED, UPON CORRECT ENTRY, CHANGE THE COLOR LINE TO GREEN
         for (let i = 0; i < valids.length; i++) {
             const element = valids[i];
-            element.style.border = "1.5px solid gainsboro"; // default border settings
+            element.style.borderColor = "var(--my-black)"; // default border settings
 
         }
         return false;
