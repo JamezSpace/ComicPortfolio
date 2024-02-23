@@ -22,6 +22,53 @@ for (let i = 0; i < refs.length; i++) {
 }
 
 
+// function allows the auto-play and switching of slides 
+// document.addEventListener("DOMContentLoaded", e => {
+function start_slideshow(){
+    let current_slide = 1
+    const navs = document.querySelectorAll("div.nav")
+
+    function showSlide(index) {
+        navs.forEach(nav => {
+            nav.classList.remove("active")
+
+            document.getElementById(nav.dataset.points_to).classList.remove("active")
+        })
+        // Show the slide at the given index
+        navs[index].classList.add("active")
+        const slide_id = navs[index].dataset.points_to
+
+        document.getElementById(slide_id).classList.add("active")
+    }
+
+
+    function nextSlide() {
+        // Increment current slide index
+        current_slide++;
+        // If it exceeds the number of slides, loop back to the first slide
+        if (current_slide >= navs.length) {
+            current_slide = 0;
+        }
+        // Show the next slide
+        showSlide(current_slide);
+
+        // fetch delay time stored in the data attribute and convert to a number
+        const slide_delay = parseInt(navs[current_slide].dataset.time_delay)
+
+        // delay the slide for that particular amount of time
+        setTimeout(nextSlide, slide_delay * 1000);
+    }
+
+    showSlide(current_slide);
+
+    // go to the next slide
+    nextSlide()
+}
+
+function change_to_slide_two() {
+
+}
+
 const images = document.querySelectorAll("section.innerwrapper img");
 console.log(images);
 
@@ -161,37 +208,11 @@ submit.addEventListener("click", e => {
 
 document.getElementById("year").textContent = new Date().getFullYear()
 
-function set_slideshow_active() {
-    const navigators = document.getElementsByClassName("nav")
-
-    for (let i = 0; i < navigators.length; i++) {
-        const nav = navigators[i];
-
-        if (nav.classList.contains("active")) {
-            // remove the active on the navigator itself
-            nav.classList.remove("active")
-
-            const slide = nav.dataset.points_to
-
-            // remove the active on the slide
-            document.getElementById(slide.toString()).classList.remove("active")
-
-            let next_index = (i + 1) % navigators.length
-            navigators[next_index].classList.add("active")
-            let next_slide = navigators[next_index].dataset.points_to
-            document.getElementById(next_slide.toString()).classList.add("active")
-
-            break
-        }
-
-
-    }
-}
 
 function handleIntersection(entries) {
     entries.map(entry => {
         if (entry.isIntersecting) {
-            set_slideshow_active()
+            start_slideshow()
         }
     })
 }
