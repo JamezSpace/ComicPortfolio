@@ -24,8 +24,8 @@ for (let i = 0; i < refs.length; i++) {
 
 // function allows the auto-play and switching of slides 
 // document.addEventListener("DOMContentLoaded", e => {
-function start_slideshow(){
-    let current_slide = 1
+function start_slideshow() {
+    let current_slide = 0
     const navs = document.querySelectorAll("div.nav")
 
     function showSlide(index) {
@@ -40,7 +40,6 @@ function start_slideshow(){
 
         document.getElementById(slide_id).classList.add("active")
     }
-
 
     function nextSlide() {
         // Increment current slide index
@@ -64,10 +63,7 @@ function start_slideshow(){
     // go to the next slide
     nextSlide()
 }
-
-function change_to_slide_two() {
-
-}
+// )
 
 const images = document.querySelectorAll("section.innerwrapper img");
 console.log(images);
@@ -213,6 +209,7 @@ function handleIntersection(entries) {
     entries.map(entry => {
         if (entry.isIntersecting) {
             start_slideshow()
+            my_observer.unobserve(document.getElementById("about"))            
         }
     })
 }

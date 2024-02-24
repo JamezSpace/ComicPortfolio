@@ -1,12 +1,24 @@
 :root {
-    --my-black: #0d110f;
-    --background-light: #fcfdfc;
-    --primary: #3d5151;
-    --secondary: #7ac9c9;
-    --accent: #D3D9D9;
-    --text-dark: #fcfdfc;
+    /* --my-black: #0d110f; */
+    
+    --my-black: #250224;
+    --text: #feedfe;
+    --primary: #800080;
+    --accent : #f35041;
+    --secondary: #f77f99;
+
+    /* --primary: #3d5151; */
+
+    /* --primary: #525252; */
+    /* --secondary: #7ac9c9; */
+    /* --accent: #D3D9D9; */
+    
+    /* --accent: #c2c2c2; */
+    /* --text: #fcfdfc; */
     --invalid-input : #ff4d6d;
     /* --accent-dark: #a8b3bd; */
+
+
 }
 
 html {
@@ -17,7 +29,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Alegreya", sans-serif;
-    background: var(--background-light);
+    background: var(--text);
     position: relative;
 }
 
@@ -37,6 +49,10 @@ img {
 
 .nav-bar-opened {
     background-color: var(--my-black);
+}
+
+.colored-gradient {
+
 }
 
 header#home {
@@ -198,7 +214,7 @@ a.logo-container img {
     margin: .5em auto;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--background-light);
+    color: var(--text);
 }
 
 #about .profileImageHolder {
@@ -241,7 +257,7 @@ a.logo-container img {
 
 #about #slide_two aside {
     flex: 1 1 30%;
-    color: var(--text-dark);
+    color: var(--text);
 }
 
 #about #slide_two aside h2 {
@@ -253,7 +269,7 @@ a.logo-container img {
     flex: 1 1 70%;
     padding: .5em;
     font-size: 1.25rem;
-    color: var(--text-dark);
+    color: var(--text);
 }
 
 .navigators {
@@ -524,7 +540,7 @@ textarea#message:focus {
     content: "";
     position: absolute;
     border: 1px solid var(--my-black);
-    color: var(--text-dark);
+    color: var(--text);
     /* left: 0; */
     /* transform: translateY(-50%); */
     opacity: 0;
