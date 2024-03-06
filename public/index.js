@@ -103,19 +103,19 @@ const email = document.getElementById("email");
 const message = document.getElementById("message");
 
 function valName() {
-    let valid = false;
+    let valid = false, tooltipText;
     const inputName = nameField.value.trim();
     let letters = /[A-Za-z]+$/;
 
-    if (inputName.length != 0 && letters.test(inputName)) {
-        valid = true;
-    }
+    if (!letters.test(inputName)) tooltipText = "Please remove any number or special character"
 
-    return [nameField, valid];
+    if (inputName.length != 0 && letters.test(inputName)) valid = true;
+
+    return [nameField, valid, tooltipText];
 }
 
 function valEmail() {
-    let valid = false;
+    let valid = false, tooltipText;
     const splitEmail = email.value.trim().split("@");
     const emailsExt = ["gmail.com", "yahoo.com", "outlook.com"];
 
@@ -123,15 +123,15 @@ function valEmail() {
 
     // }
 
-    if (email.value.trim().length > 0 && emailsExt.indexOf(splitEmail[1]) != 0) {
-        notif = "  Email address extension not valid";
+    if (emailsExt.indexOf(splitEmail[1]) === -1) {
+        tooltipText = "Email address extension not valid";
     }
 
     if (typeof splitEmail[0] === "string" && emailsExt.indexOf(splitEmail[1]) >= 0) {
         valid = true;
     }
 
-    return [email, valid];
+    return [email, valid, tooltipText];
 }
 
 function valInputs() {
@@ -143,30 +143,52 @@ function valInputs() {
     const resultName = valName();
     const resultEmail = valEmail();
     const array = [resultName, resultEmail];
+    console.log("array: ", array);
 
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
+        console.log("element: ", element);
 
         if (!element[1]) {
-            invalids.push(element[0]);
+            // index 0 represents the element itself and index 2 represents the tooltipText
+            invalids.push({ element: element[0], tooltipText: element[2] });
         } else {
             valids.push(element[0]);
         }
+    }
+
+    // AFTER CHANGING BOTTOM-BORDER LINE TO RED, UPON CORRECT ENTRY, CHANGE THE COLOR LINE TO DEFAULT
+    for (let i = 0; i < valids.length; i++) {
+        const element = valids[i];
+
+        const error_icon = element.dataset.error_icon;
+
+        document.getElementById(error_icon).classList.remove("on")
+
+        element.style.borderColor = ""; // clear previous color thereby defaulting the color.
+
+        document.querySelectorAll("span.tooltip").forEach(each_tooltip => {
+            each_tooltip.textContent = ""
+        })
     }
 
     if (invalids.length != 0) {
 
         // TO CHANGE THE COLOR OF THE LINE FOR THE INVALID INPUTS TO RED
         for (let i = 0; i < invalids.length; i++) {
-            const element = invalids[i];
-            element.style.borderColor = "var(--invalid-input)";
-        }
-        // AFTER CHANGING BOTTOM-BORDER LINE TO RED, UPON CORRECT ENTRY, CHANGE THE COLOR LINE TO GREEN
-        for (let i = 0; i < valids.length; i++) {
-            const element = valids[i];
-            element.style.borderColor = "var(--my-black)"; // default border settings
+            const field = invalids[i]
 
+            const error_icon = field.element.dataset.error_icon;
+
+            const icon = document.getElementById(error_icon)
+
+            icon.classList.add("on")
+
+            icon.nextElementSibling.innerText = field.tooltipText
+
+            field.element.style.borderColor = "var(--red)";
         }
+
         return false;
     }
 
@@ -209,7 +231,7 @@ function handleIntersection(entries) {
     entries.map(entry => {
         if (entry.isIntersecting) {
             start_slideshow()
-            my_observer.unobserve(document.getElementById("about"))            
+            my_observer.unobserve(document.getElementById("about"))
         }
     })
 }
