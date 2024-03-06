@@ -66,7 +66,7 @@ function start_slideshow() {
 // )
 
 const images = document.querySelectorAll("section.innerwrapper img");
-console.log(images);
+// console.log(images);
 
 // function wait(arr, i) {
 //     return new Promise(resolve => {
@@ -135,7 +135,7 @@ function valEmail() {
 }
 
 function valInputs() {
-    let valid = false;
+    let valid = true;
 
     const invalids = [];
     const valids = [];
@@ -217,11 +217,37 @@ form.addEventListener("input", e => {
     }
 });
 
-submit.addEventListener("click", e => {
+async function submitForm(formDataJSON) {
+    try {
+        const response = await axios.post('/submit', formDataJSON)
+
+        response.data.status === 1
+            ?
+            swal("Blog is Live!", "You just successfuly posted your blog", "success", { button: "OK" })
+            :
+            swal("Oops! Somethin went wrong", "Please retry")
+
+        return response.data.status
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+form.addEventListener("submit", e => {
+    e.preventDefault()
+    
     //that is if validate Input is false
     if (!valInputs()) {
-        e.preventDefault()
+        return;
     }
+
+    const formData = new FormData(e.target), formDataJSON = {}
+    formData.forEach((value, key) => {
+        formDataJSON[key] = value
+    })
+
+    submitForm(formDataJSON)
 });
 
 document.getElementById("year").textContent = new Date().getFullYear()

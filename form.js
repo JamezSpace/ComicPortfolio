@@ -4,6 +4,7 @@ const express = require('express'),
 const app = express()
 
 app.use(bodyparser.urlencoded({extended : true}))
+app.use(bodyparser.json())
 
 app.post('/submit', (req, res) => {
     console.log(req.body);
@@ -11,7 +12,8 @@ app.post('/submit', (req, res) => {
         fullMessage = `
         Hi, I am ${name}.
 
-        Here's my message: <p>${message}</p>
+        Here's my message: 
+        ${message}
 
         Here's my email: ${email}
         Thank you.
@@ -48,7 +50,7 @@ app.post('/submit', (req, res) => {
         })
     }
 
-    // send_email(mail_details)
+    send_email(mail_details)
 
     res.redirect('/')
 })
