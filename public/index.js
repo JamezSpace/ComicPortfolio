@@ -1,6 +1,5 @@
 const navs = document.getElementsByClassName("nav");
 
-
 function open_nav_bar() {
     document.getElementById("mobile-nav").classList.add("active")
     document.body.classList.add("nav-bar-opened")
@@ -223,9 +222,9 @@ async function submitForm(formDataJSON) {
 
         response.data.status === 1
             ?
-            swal("Blog is Live!", "You just successfuly posted your blog", "success", { button: "OK" })
+            document.dispatchEvent(myEvent)
             :
-            swal("Oops! Somethin went wrong", "Please retry")
+            console.log("error");
 
         return response.data.status
 
@@ -264,3 +263,10 @@ function handleIntersection(entries) {
 
 const my_observer = new IntersectionObserver(handleIntersection, { threshold: 1 })
 my_observer.observe(document.getElementById("about"))
+
+// create my custom event to be listened by script in html
+const myEvent = new CustomEvent('data-sent', {
+    detail : { success : 1},
+    bubbles: true,
+    cancelable : true
+})

@@ -9,17 +9,9 @@ app.use(bodyparser.json())
 app.post('/submit', (req, res) => {
     console.log(req.body);
     const { name, email, message } = req.body,
-        fullMessage = `
-        Hi, I am ${name}.
-
-        Here's my message: 
-        ${message}
-
-        Here's my email: ${email}
-        Thank you.
+        fullMessage = `Hi, I am ${name}. Here's my message: \n\n${message}\n\nHere's my email: ${email}\nThank you.
     `
 
-    console.log(fullMessage);   
     let transporter = nodemailer.createTransport({
         service : 'gmail',
         auth : {
@@ -32,27 +24,29 @@ app.post('/submit', (req, res) => {
         from : process.env.portfolio_email,
         to : process.env.portfolio_email,
         subject : "Message from your portfolio",
-        html : fullMessage
+        text : fullMessage
     }
 
-    function send_email(mail_details){
+    async function send_email(mail_details){
+        let sent = false
         retry_count += 1
-        if (!(retry_count <= 3)) { console.log(`Error sending email after ${retry_count} times`); return;}
+        if (!(retry_count <= 3)) { console.log(`Error sending email after ${retry_count} times`); return sent;}
 
-        transporter.sendMail(mail_details, (error, info) => {
+        await transporter.sendMail(mail_details, (error, info) => {
             if (error) {
                 console.error('Error sending email:', error);
     
                 send_email(mail_details)
             } else {
                 console.log('Email sent:', info.response);
+                sent = true;
             }
         })
+
+        return sent
     }
 
-    send_email(mail_details)
-
-    res.redirect('/')
+    send_email(mail_details) ? res.send({status : 1}) : res.send({status : 0})
 })
 
 module.exports = app
