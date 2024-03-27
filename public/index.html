@@ -74,7 +74,7 @@
         </div>
 
         <!-- Navigators -->
-        <div class="navigators">
+        <div class="navigators flex">
             <div class="nav active" id="nav-1" data-points_to="slide_one" data-time_delay="3"></div>
             <div class="nav" id="nav-2" data-points_to="slide_two" data-time_delay="10"></div>
         </div>
@@ -82,22 +82,39 @@
     <div id="works">
         <h2 class="fluid-heading">My Works</h2>
         <section class="overview">
-            <section class="innerwrapper">
-                <img src="img/pic (1).jpg" alt="" loading="lazy">
-                <img src="img/pic (2).png" alt="" loading="lazy">
-                <img src="img/pic (3).jpg" alt="" loading="lazy">
-                <img src="img/pic (4).jpg" alt="" loading="lazy">
-                <img src="img/pic (5).jpg" alt="" loading="lazy">
-                <img src="img/pic (6).png" alt="" loading="lazy">
-                <img src="img/pic (7).png" alt="" loading="lazy">
-                <img src="img/pic (8).png" alt="" loading="lazy">
-                <img src="img/pic (9).png" alt="" loading="lazy">
-                <img src="img/pic (10).jpg" alt="" loading="lazy">
-                <img src="img/pic (11).png" alt="" loading="lazy">
+            <section class="innerwrapper flex">
+                <img src="img/pic (1).jpg" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (2).png" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (3).jpg" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (4).jpg" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (5).jpg" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (6).png" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (7).png" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (8).png" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (9).png" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (10).jpg" alt="Benedict's work" loading="lazy" class="work">
+                <img src="img/pic (11).png" alt="Benedict's work" loading="lazy" class="work">
             </section>
         </section>
     </div>
-    <div id="contact">
+    <dialog id="image-viewer">
+        <div class="image-viewer-open">
+            <span class="image-container">
+                <img src="" alt="" id="image">
+            </span>
+            <article class="narration"></article>
+            <section class="navigators flex">
+                <span class="arrow round-circle" id="left-arrow">
+                    <iconify-icon icon="iconamoon:arrow-left-2-light"></iconify-icon>
+                </span>
+                <span class="arrow round-circle" id="right-arrow">
+                    <iconify-icon icon="iconamoon:arrow-left-2-light" class="right"></iconify-icon>
+                </span>
+            </section>
+        </div>
+        <span id="close-dialog" class="round-circle">&times;</span>
+    </dialog>
+    <div id="contact" class="flex">
         <h2>contact me</h2>
         <form action="/submit" name="contactMe" method="post">
             <span class="box">
@@ -132,7 +149,7 @@
             <button type="submit" id="btn_submit" disabled>send</button><button type="reset">cancel</button>
         </form>
     </div>
-    <footer>
+    <footer class="flex">
         <div id="text">&copy;Benedict Adukanle <span id="year"></span></div>
     </footer>
 

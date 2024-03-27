@@ -62,37 +62,6 @@ function start_slideshow() {
     // go to the next slide
     nextSlide()
 }
-// )
-
-const images = document.querySelectorAll("section.innerwrapper img");
-// console.log(images);
-
-// function wait(arr, i) {
-//     return new Promise(resolve => {
-//         setTimeout(console.log("hi"), 3000);
-//     });
-// }
-
-async function test() {
-    for (let i = 0; i < images.length; i++) {
-        while (!images[i].complete) {
-            const el = await wait(images, i);
-            console.log(el);
-            if (el.complete) {
-                addClickEvent(images[i]);
-                break;
-            }
-        }
-    }
-}
-
-test();
-
-function addClickEvent(element) {
-    element.addEventListener("click", e => {
-        alert("hi");
-    });
-}
 
 
 const form = document.forms['contactMe'];
@@ -269,4 +238,79 @@ const myEvent = new CustomEvent('data-sent', {
     detail : { success : 1},
     bubbles: true,
     cancelable : true
+})
+
+const dialog = document.getElementById("image-viewer")
+
+function openDialog() {
+    dialog.showModal()
+}
+
+function closeDialog() {
+    dialog.close()
+}
+
+document.getElementById("close-dialog").addEventListener("click", () => {
+    closeDialog()
+})
+
+function render_img_at_index(num) {
+    active_image_previewed = all_images_location[num]
+
+    document.getElementById("image").setAttribute('src', active_image_previewed)
+}
+
+function render_previous_img () {
+    let previous_img_index;
+
+    const current_img_index = all_images_location.indexOf(active_image_previewed)
+
+    if (current_img_index === 0) {
+        previous_img_index = all_images_location.length - 1
+    } else {
+        previous_img_index = current_img_index - 1
+    }
+
+    render_img_at_index(previous_img_index)
+}
+
+function render_next_img () {
+    let following_img_index;
+
+    const current_img_index = all_images_location.indexOf(active_image_previewed)
+
+    if (current_img_index + 1 === all_images_location.length) {
+        following_img_index = 0
+    } else {
+        following_img_index = current_img_index + 1
+    }
+
+    render_img_at_index(following_img_index)
+}
+
+const works = document.querySelectorAll("img.work")
+let all_images_location = [], active_image_previewed = ""
+
+works.forEach(work => {
+    all_images_location.push(work.getAttribute('src'))
+
+    work.addEventListener("click", e => {
+        active_image_previewed = work.getAttribute('src');
+        openDialog()
+        document.getElementById("image").setAttribute('src', active_image_previewed)
+    })
+})
+
+document.getElementById("left-arrow").addEventListener("click", e => {
+    render_previous_img()
+})
+
+document.getElementById("right-arrow").addEventListener("click", () => {
+    render_next_img()
+})
+
+document.addEventListener("keydown", e => {
+    if (!dialog.open) return
+    else if (e.key === 'ArrowRight') render_next_img()
+    else if (e.key === 'ArrowLeft') render_previous_img()
 })
