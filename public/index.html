@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
-    <link rel="icon" sizes="192x192" href="./img/android-chrome-192x192.png">
-    <link rel="icon" sizes="512x512" href="./img/android-chrome-512x512.png">
+    <link rel="shortcut icon" href="./img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
+    <link rel="icon" sizes="192x192" href="./img/favicon/android-chrome-192x192.png">
+    <link rel="icon" sizes="512x512" href="./img/favicon/android-chrome-512x512.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -35,12 +35,12 @@
                 onclick="open_nav_bar()"></iconify-icon>
         </nav>
 
-        <h1 class="fluid-heading">
-            <span class="first-line-gradient">Comic Book Colorist</span>
+        <h1 class="fluid-heading text-gradient">
+            <span class="colored-gradient first-line-gradient">Comic Book Colorist</span>
             <br>
-            <span class="second-line-gradient">Cover Artist</span>
+            <span class="colored-gradient second-line-gradient">Cover Artist</span>
             <br>
-            <span class="third-line-gradient">Pinup Colorist</span>
+            <span class="colored-gradient third-line-gradient">Pinup Colorist</span>
         </h1>
 
         <nav id="mobile-nav">
@@ -65,7 +65,7 @@
                 <h2 class="accent">Benedict Adukanle</h2>
             </aside>
             <main>
-                I'm a digital artist specializing in <span class="colored-gradient">comic book coloring</span>
+                I'm a digital artist specializing in <span class="text-gradient inline-text">comic book coloring</span>
                 . I'm looking for new clients to work with, and I was wondering if you might be interested in my
                 services. I'm passionate about my work and I strive to deliver high-quality results. Please let me know
                 if you'd like to discuss my rates or see some of my past work. I'd love to chat with you about how I can
@@ -114,40 +114,42 @@
         </div>
         <span id="close-dialog" class="round-circle">&times;</span>
     </dialog>
-    <div id="contact" class="flex">
-        <h2>contact me</h2>
-        <form action="/submit" name="contactMe" method="post">
-            <span class="box">
-                <input type="text" name="name" id="name" placeholder="name" maxlength="20" autocomplete="off"
-                    data-error_icon="name_exclaim">
-                <div class="red-circle">
-                    <iconify-icon icon="humbleicons:exclamation" style="color: #ff4d6d;" width="20" height="20"
-                        id="name_exclaim" class="caution">
-                    </iconify-icon>
-                    <span class="tooltip"></span>
-                </div>
-            </span>
+    <div class="my-background">
+        <div id="contact" class="flex card">
+            <h2>contact me</h2>
+            <form action="/submit" name="contactMe" method="post">
+                <span class="box">
+                    <input type="text" name="name" id="name" placeholder="name" maxlength="20" autocomplete="off"
+                        data-error_icon="name_exclaim">
+                    <div class="red-circle">
+                        <iconify-icon icon="humbleicons:exclamation" style="color: #ff4d6d;" width="20" height="20"
+                            id="name_exclaim" class="caution">
+                        </iconify-icon>
+                        <span class="tooltip"></span>
+                    </div>
+                </span>
 
-            <span class="box">
-                <input type="email" name="email" id="email" placeholder="email" autocomplete="off" onblur="valEmail()"
-                    data-error_icon="email_exclaim">
-                <div class="red-circle">
-                    <iconify-icon icon="humbleicons:exclamation" style="color: #ff4d6d;" width="20" height="20"
-                        id="email_exclaim" class="caution">
-                    </iconify-icon>
-                    <span class="tooltip"></span>
-                </div>
-            </span>
+                <span class="box">
+                    <input type="email" name="email" id="email" placeholder="email" autocomplete="off"
+                        onblur="valEmail()" data-error_icon="email_exclaim">
+                    <div class="red-circle">
+                        <iconify-icon icon="humbleicons:exclamation" style="color: #ff4d6d;" width="20" height="20"
+                            id="email_exclaim" class="caution">
+                        </iconify-icon>
+                        <span class="tooltip"></span>
+                    </div>
+                </span>
 
-            <span class="box">
-                <textarea name="message" id="message" cols="30" rows="10" placeholder="message" required></textarea>
-                <div class="red-circle"><iconify-icon icon="humbleicons:exclamation" style="color: #ff4d6d;" width="20"
-                        height="20" id="msg_exclaim" class="caution"></iconify-icon>
-                </div>
-            </span>
+                <span class="box">
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="message" required></textarea>
+                    <div class="red-circle"><iconify-icon icon="humbleicons:exclamation" style="color: #ff4d6d;"
+                            width="20" height="20" id="msg_exclaim" class="caution"></iconify-icon>
+                    </div>
+                </span>
 
-            <button type="submit" id="btn_submit" disabled>send</button><button type="reset">cancel</button>
-        </form>
+                <button type="submit" id="btn_submit" disabled>send</button><button type="reset">cancel</button>
+            </form>
+        </div>
     </div>
     <footer class="flex">
         <div id="text">&copy;Benedict Adukanle <span id="year"></span></div>
