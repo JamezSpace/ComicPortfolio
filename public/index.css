@@ -171,7 +171,8 @@ nav#header_nav a:not(:first-of-type):before {
     position: absolute;
     top: 50%;
     left: 50%;
-    translate: -50% -50%;
+    transform: translate(-50%);
+    /* translate: -50% -50%; */
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -187,7 +188,8 @@ nav#header_nav a:not(:first-of-type):after {
     position: absolute;
     top: 50%;
     left: 50%;
-    translate: -50% -50%;
+    transform: translate(-50%);
+    /* translate: -50% -50%; */
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -290,7 +292,6 @@ a.logo-container img {
     justify-content: center;
     align-items: center;
     z-index: 0;
-    scale: 1;
     overflow: hidden;
     -webkit-transition: all 0.35s linear;
     transition: all 0.35s linear;
@@ -447,6 +448,16 @@ a.logo-container img {
     border-radius: calc(20px - 10px);
 }
 
+img.work[loading] {
+    background-color: blue;
+    background-position: center;
+    background-size: contain;
+}
+
+img.work[src] {
+    background: none;
+}
+
 .innerwrapper img:hover {
     box-shadow: none;
 }
@@ -578,10 +589,10 @@ textarea#message:focus {
     z-index: -1;
     border-radius: 5px;
     inset: 0;
-    scale: 0 1;
+    transform: scale(0, 1);
     transform-origin: right;
-    -webkit-transition: scale 450ms;
-    transition: scale 450ms;
+    -webkit-transition: transform 450ms;
+    transition: transform 450ms;
 }
 
 #contact button:nth-of-type(1):enabled::after {
@@ -723,6 +734,7 @@ dialog {
     padding: 5px;
     border: none;
     background-color: transparent;
+    -webkit-backdrop-filter: blur(5px) saturate(80%);
     backdrop-filter: blur(5px) saturate(80%);
     outline: none;
 }
@@ -740,10 +752,19 @@ dialog {
     height: 60vh;
     display: flex;
     justify-content: center;
+    overflow: auto;
 }
 
 .image-container img {
     height: inherit;
+    display: block;
+    transition: -webkit-transform 200ms, transform 200ms;
+}
+
+.image-container img.scaled-in {
+    /* scale: 2; scale not supported by most browsers */
+    -webkit-transform: scale(2);
+    transform: scale(2);
 }
 
 #image-viewer .narration {

@@ -1,4 +1,17 @@
-const navs = document.getElementsByClassName("nav");
+const navs = document.getElementsByClassName("nav"),
+    all_images_pairings = {
+        'img/pic (1).webp' : 'img/pic (1).jpg',
+        'img/pic (2).webp' : 'img/pic (2).png',
+        'img/pic (3).webp' : 'img/pic (3).jpg',
+        'img/pic (4).webp' : 'img/pic (4).jpg',
+        'img/pic (5).webp' : 'img/pic (5).jpg',
+        'img/pic (6).webp' : 'img/pic (6).png',
+        'img/pic (7).webp' : 'img/pic (7).png',
+        'img/pic (8).webp' : 'img/pic (8).png',
+        'img/pic (9).webp' : 'img/pic (9).png',
+        'img/pic (10).webp' : 'img/pic (10).jpg',
+        'img/pic (11).webp' : 'img/pic (11).png',
+    }
 
 function open_nav_bar() {
     document.getElementById("mobile-nav").classList.add("active")
@@ -244,6 +257,14 @@ const dialog = document.getElementById("image-viewer")
 
 function openDialog() {
     dialog.showModal()
+
+    document.addEventListener("click", e => {
+        console.log(e.target);
+
+        // if(e.target !== 'img#image') return;
+
+        e.target.classList.toggle("scaled-in")
+    })
 }
 
 function closeDialog() {
@@ -257,7 +278,7 @@ document.getElementById("close-dialog").addEventListener("click", () => {
 function render_img_at_index(num) {
     active_image_previewed = all_images_location[num]
 
-    document.getElementById("image").setAttribute('src', active_image_previewed)
+    document.getElementById("image").setAttribute('src', all_images_pairings[active_image_previewed])
 }
 
 function render_previous_img () {
@@ -289,19 +310,22 @@ function render_next_img () {
 }
 
 const works = document.querySelectorAll("img.work")
-let all_images_location = [], active_image_previewed = ""
+let active_image_previewed = "", all_images_location = []
 
-works.forEach(work => {
+for (let i = 0; i < works.length; i++) {
+    const work = works[i];
     all_images_location.push(work.getAttribute('src'))
-
-    work.addEventListener("click", e => {
-        active_image_previewed = work.getAttribute('src');
+    
+    work.addEventListener("click", () => {
         openDialog()
-        document.getElementById("image").setAttribute('src', active_image_previewed)
-    })
-})
 
-document.getElementById("left-arrow").addEventListener("click", e => {
+        active_image_previewed = work.getAttribute('src');
+
+        document.getElementById("image").setAttribute('src', all_images_pairings[active_image_previewed])
+    })
+}
+
+document.getElementById("left-arrow").addEventListener("click", () => {
     render_previous_img()
 })
 
@@ -314,3 +338,4 @@ document.addEventListener("keydown", e => {
     else if (e.key === 'ArrowRight') render_next_img()
     else if (e.key === 'ArrowLeft') render_previous_img()
 })
+
