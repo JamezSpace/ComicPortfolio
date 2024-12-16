@@ -200,15 +200,23 @@ form.addEventListener("input", e => {
 
 async function submitForm(formDataJSON) {
     try {
-        const response = await axios.post('/submit', formDataJSON)
+        const response = await fetch('/api/form', {
+            body: JSON.stringify(formDataJSON),
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
 
-        response.data.status === 1
+        const resp = await response.json()
+
+        resp.data.status === 1
             ?
             document.dispatchEvent(myEvent)
             :
             console.log("error");
 
-        return response.data.status
+        return resp.data.status
 
     } catch (err) {
         console.error(err);

@@ -63,13 +63,9 @@ img {
     background-clip: text;
 }
 
-.first-line-gradient {}
-
 .second-line-gradient {
     animation-delay: 6s;
 }
-
-.third-line-gradient {}
 
 @keyframes animated_gradient {
     0% {
@@ -87,11 +83,14 @@ img {
 
 .text-gradient.inline-text {
     background: linear-gradient(to right, var(--primary-shade), var(--accent-shade));
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: 600;
 }
 
 .card {
-    backdrop-filter: blur(25px) saturate(100%);
     -webkit-backdrop-filter: blur(25px) saturate(100%);
+    backdrop-filter: blur(25px) saturate(100%);
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     border: 1px solid rgba(209, 213, 219, 0.3);
@@ -171,8 +170,8 @@ nav#header_nav a:not(:first-of-type):before {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%);
-    /* translate: -50% -50%; */
+    /* transform: translate(-50%, -50%); */
+    translate: -50% -50%;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -188,15 +187,15 @@ nav#header_nav a:not(:first-of-type):after {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%);
-    /* translate: -50% -50%; */
+    /* transform: translate(-50%, -50%); */
+    translate: -50% -50%;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     outline: 1px solid var(--text);
     opacity: 0;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.5s opacity;
+    transition: 0.5s opacity;
 }
 
 nav#header_nav a:not(:first-of-type):hover::before {
@@ -368,10 +367,19 @@ a.logo-container img {
     opacity: 0.7;
 }
 
-.navigators div.active {
-    outline-offset: 4.5px;
-    outline-color: var(--secondary);
-    opacity: 1;
+@supports (outline-offset: 4.5px) {
+    .navigators div.active {
+        outline-offset: 4.5px;
+        outline-color: var(--secondary);
+        opacity: 1;
+    }
+}
+
+@supports not (outline-offset: 4.5px) {
+    .navigators div.active {
+        box-shadow: 0 0 0 3px var(--primary), 0 0 0 4px var(--secondary);
+        opacity: 1;
+    }
 }
 
 #works {
@@ -434,28 +442,39 @@ a.logo-container img {
     border: 2px solid rgb(252, 253, 252, 0.6);
     border-radius: 20px;
     padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: .75em;
     justify-content: center;
-    /* align-items: center; commenting this line makes all images same height */
+     align-items: center; /*commenting this line makes all images same height */
 }
 
 .innerwrapper img {
-    /* height: 20em; */
-    width: 10em;
+    height: inherit;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.2) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
     border-radius: calc(20px - 10px);
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
 }
 
-img.work[loading] {
-    background-color: blue;
+.innerwrapper img:last-of-type {
+    flex: 1;
+}
+
+.blur-load {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    border-radius: calc(20px - 10px);
+    background-image: url('./img/blank.png');
+    background-size: cover;
     background-position: center;
-    background-size: contain;
 }
 
-img.work[src] {
-    background: none;
+.blur-load:last-of-type {
+    grid-column: 1 / -1;
 }
 
 .innerwrapper img:hover {
@@ -589,9 +608,10 @@ textarea#message:focus {
     z-index: -1;
     border-radius: 5px;
     inset: 0;
+    -webkit-transform: scale(0, 1);
     transform: scale(0, 1);
     transform-origin: right;
-    -webkit-transition: transform 450ms;
+    -webkit-transition: -webkit-transform 450ms;
     transition: transform 450ms;
 }
 
@@ -605,8 +625,10 @@ textarea#message:focus {
 
 #contact button:enabled:hover:after,
 #contact button:enabled:hover:after {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
     transform-origin: left;
-    scale: 1 1;
+    /* scale: 1 1; */
 }
 
 #contact button:enabled:hover {
@@ -801,4 +823,5 @@ dialog {
     right: 10px;
     font-size: 1.5em;
     align-items: flex-end;
+    cursor: pointer;
 }
