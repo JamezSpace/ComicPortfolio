@@ -1,16 +1,18 @@
+document.getElementById("year").textContent = new Date().getFullYear()
+
 const navs = document.getElementsByClassName("nav"),
     all_images_pairings = {
-        'img/pic (1).webp' : 'img/pic (1).jpg',
-        'img/pic (2).webp' : 'img/pic (2).png',
-        'img/pic (3).webp' : 'img/pic (3).jpg',
-        'img/pic (4).webp' : 'img/pic (4).jpg',
-        'img/pic (5).webp' : 'img/pic (5).jpg',
-        'img/pic (6).webp' : 'img/pic (6).png',
-        'img/pic (7).webp' : 'img/pic (7).png',
-        'img/pic (8).webp' : 'img/pic (8).png',
-        'img/pic (9).webp' : 'img/pic (9).png',
-        'img/pic (10).webp' : 'img/pic (10).jpg',
-        'img/pic (11).webp' : 'img/pic (11).png',
+        'img/pic(1).webp': 'img/pic(1).jpg',
+        'img/pic(2).webp': 'img/pic(2).png',
+        'img/pic(3).webp': 'img/pic(3).jpg',
+        'img/pic(4).webp': 'img/pic(4).jpg',
+        'img/pic(5).webp': 'img/pic(5).jpg',
+        'img/pic(6).webp': 'img/pic(6).png',
+        'img/pic(7).webp': 'img/pic(7).png',
+        'img/pic(8).webp': 'img/pic(8).png',
+        'img/pic(9).webp': 'img/pic(9).png',
+        'img/pic(10).webp': 'img/pic(10).jpg',
+        'img/pic(11).webp': 'img/pic(11).png',
     }
 
 function open_nav_bar() {
@@ -198,16 +200,20 @@ form.addEventListener("input", e => {
     }
 });
 
-async function submitForm(formDataJSON) {
+async function submitForm(data) {
     try {
-        const response = await fetch('/api/form', {
-            body: JSON.stringify(formDataJSON),
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        // const response = await fetch('/form', {
+        //     method: 'POST',
+        //     body: JSON.stringify(data),
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // })
 
+        const response = await axios.post('/api/form', JSON.stringify(data))
+        
+        console.dir(response);
+        
         const resp = await response.json()
 
         resp.data.status === 1
@@ -223,9 +229,9 @@ async function submitForm(formDataJSON) {
     }
 }
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", async e => {
     e.preventDefault()
-    
+
     //that is if validate Input is false
     if (!valInputs()) {
         return;
@@ -236,11 +242,8 @@ form.addEventListener("submit", e => {
         formDataJSON[key] = value
     })
 
-    submitForm(formDataJSON)
+    await submitForm(formDataJSON)
 });
-
-document.getElementById("year").textContent = new Date().getFullYear()
-
 
 function handleIntersection(entries) {
     entries.map(entry => {
@@ -256,9 +259,9 @@ my_observer.observe(document.getElementById("about"))
 
 // create my custom event to be listened by script in html
 const myEvent = new CustomEvent('data-sent', {
-    detail : { success : 1},
+    detail: { success: 1 },
     bubbles: true,
-    cancelable : true
+    cancelable: true
 })
 
 const dialog = document.getElementById("image-viewer")
@@ -289,7 +292,7 @@ function render_img_at_index(num) {
     document.getElementById("image").setAttribute('src', all_images_pairings[active_image_previewed])
 }
 
-function render_previous_img () {
+function render_previous_img() {
     let previous_img_index;
 
     const current_img_index = all_images_location.indexOf(active_image_previewed)
@@ -303,7 +306,7 @@ function render_previous_img () {
     render_img_at_index(previous_img_index)
 }
 
-function render_next_img () {
+function render_next_img() {
     let following_img_index;
 
     const current_img_index = all_images_location.indexOf(active_image_previewed)
@@ -323,7 +326,7 @@ let active_image_previewed = "", all_images_location = []
 for (let i = 0; i < works.length; i++) {
     const work = works[i];
     all_images_location.push(work.getAttribute('src'))
-    
+
     work.addEventListener("click", () => {
         openDialog()
 

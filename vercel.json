@@ -2,12 +2,16 @@
     "version" : 2,
     "routes" : [
         {
-            "src": "/",
-            "dest": "index.html"
+            "src": "/api/form",
+            "dest": "/api/form-serverless.js"
         },
         {
-            "src": "/api/form",
-            "dest": "./form-serverless.js"
+            "src": "/",
+            "dest": "/index.html"
         }
-    ]
+    ],
+    "framework": null,
+    "installCommand": null,
+    "buildCommand": "",
+    "outputDirectory": "public"
 }

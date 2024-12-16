@@ -35,13 +35,15 @@ async function send_email(mail_details) {
 }
 
 export default async function handler(req, res) {
+    console.log("in handler");
+    
     if (req.method !== 'POST') return res.status(403).end()
 
     const { name, email, message } = req.body,
         fullMessage = `Hi, I am ${name}. Here's my message: \n\n${message}\n\nHere's my email: ${email}\nThank you.
         `
 
-    mail_details = {
+    let mail_details = {
         from: process.env.portfolio_email,
         to: process.env.portfolio_email,
         subject: "Message from your portfolio",
